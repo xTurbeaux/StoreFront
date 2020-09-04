@@ -103,3 +103,6 @@ C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\obj\Debug\AAronsAmmoShack.UI.MVC.csproj.CopyComplete
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\obj\Debug\AAronsAmmoShack.UI.MVC.dll
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\obj\Debug\AAronsAmmoShack.UI.MVC.pdb
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\bin\AAronsAmmoShack.DATA.EF.dll
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\bin\AAronsAmmoShack.DATA.EF.pdb
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\StoreFrontLab\StoreFront\AAronsAmmoShack\AAronsAmmoShack.UI.MVC\bin\AAronsAmmoShack.DATA.EF.dll.config

@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManufacturersController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +252,11 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Manufacturers\Create.cshtml" />
+    <Content Include="Views\Manufacturers\Delete.cshtml" />
+    <Content Include="Views\Manufacturers\Details.cshtml" />
+    <Content Include="Views\Manufacturers\Edit.cshtml" />
+    <Content Include="Views\Manufacturers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +273,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AAronsAmmoShack.DATA.EF\AAronsAmmoShack.DATA.EF.csproj">
+      <Project>{c9d2301c-be8a-4751-bb4a-f72bcbfc1b3f}</Project>
+      <Name>AAronsAmmoShack.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
