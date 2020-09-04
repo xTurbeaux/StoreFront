@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBAmmoShackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ammos">
+    <Key>
+      <PropertyRef Name="AmmoID" />
+    </Key>
+    <Property Name="AmmoID" Type="int" Nullable="false" />
+    <Property Name="AmmoName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AmmoDescription" Type="nvarchar(max)" />
+    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+    <Property Name="Price" Type="money" />
+    <Property Name="IsTracer" Type="bit" Nullable="false" />
+    <Property Name="IsSubsonic" Type="bit" Nullable="false" />
+    <Property Name="MuzzleVelocity" Type="int" Nullable="false" />
+    <Property Name="ProductImage" Type="varchar" MaxLength="100" />
+    <Property Name="CaliberID" Type="int" Nullable="false" />
+    <Property Name="RFID" Type="int" Nullable="false" />
+    <Property Name="DamageID" Type="int" Nullable="false" />
+    <Property Name="ManufacturerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calibers">
+    <Key>
+      <PropertyRef Name="CaliberID" />
+    </Key>
+    <Property Name="CaliberID" Type="int" Nullable="false" />
+    <Property Name="CaliberName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CaliberDescription" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Damages">
+    <Key>
+      <PropertyRef Name="DamageID" />
+    </Key>
+    <Property Name="DamageID" Type="int" Nullable="false" />
+    <Property Name="Penetration" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Damage" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ArmorDamage" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FragmentationChange" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Manufacturers">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="int" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="20" />
+    <Property Name="State" Type="varchar" MaxLength="20" />
+    <Property Name="Country" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RelatedFirearms">
+    <Key>
+      <PropertyRef Name="RFID" />
+    </Key>
+    <Property Name="RFID" Type="int" Nullable="false" />
+    <Property Name="FamilyName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FamilyDescription" Type="varchar" MaxLength="50" />
+    <Property Name="ManufacturerID" Type="int" />
+  </EntityType>
+  <Association Name="FK_Ammos_Calibers">
+    <End Role="Calibers" Type="Self.Calibers" Multiplicity="1" />
+    <End Role="Ammos" Type="Self.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calibers">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_Damages">
+    <End Role="Damages" Type="Self.Damages" Multiplicity="1" />
+    <End Role="Ammos" Type="Self.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Damages">
+        <PropertyRef Name="DamageID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="DamageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_Manufacturers">
+    <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+    <End Role="Ammos" Type="Self.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_RelatedFirearms">
+    <End Role="RelatedFirearms" Type="Self.RelatedFirearms" Multiplicity="1" />
+    <End Role="Ammos" Type="Self.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedFirearms">
+        <PropertyRef Name="RFID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="RFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calibers_Calibers">
+    <End Role="Calibers" Type="Self.Calibers" Multiplicity="1" />
+    <End Role="Calibers1" Type="Self.Calibers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Calibers">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Calibers1">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedFirearms_Manufacturers">
+    <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+    <End Role="RelatedFirearms" Type="Self.RelatedFirearms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="RelatedFirearms">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBAmmoShackModelStoreContainer">
+    <EntitySet Name="Ammos" EntityType="Self.Ammos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calibers" EntityType="Self.Calibers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Damages" EntityType="Self.Damages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedFirearms" EntityType="Self.RelatedFirearms" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ammos_Calibers" Association="Self.FK_Ammos_Calibers">
+      <End Role="Calibers" EntitySet="Calibers" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_Damages" Association="Self.FK_Ammos_Damages">
+      <End Role="Damages" EntitySet="Damages" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_Manufacturers" Association="Self.FK_Ammos_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_RelatedFirearms" Association="Self.FK_Ammos_RelatedFirearms">
+      <End Role="RelatedFirearms" EntitySet="RelatedFirearms" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calibers_Calibers" Association="Self.FK_Calibers_Calibers">
+      <End Role="Calibers" EntitySet="Calibers" />
+      <End Role="Calibers1" EntitySet="Calibers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedFirearms_Manufacturers" Association="Self.FK_RelatedFirearms_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="RelatedFirearms" EntitySet="RelatedFirearms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

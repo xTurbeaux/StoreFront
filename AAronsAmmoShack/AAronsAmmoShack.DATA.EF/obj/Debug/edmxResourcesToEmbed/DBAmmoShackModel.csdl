@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBAmmoShackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ammos">
+    <Key>
+      <PropertyRef Name="AmmoID" />
+    </Key>
+    <Property Name="AmmoID" Type="Int32" Nullable="false" />
+    <Property Name="AmmoName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AmmoDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IsTracer" Type="Boolean" Nullable="false" />
+    <Property Name="IsSubsonic" Type="Boolean" Nullable="false" />
+    <Property Name="MuzzleVelocity" Type="Int32" Nullable="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CaliberID" Type="Int32" Nullable="false" />
+    <Property Name="RFID" Type="Int32" Nullable="false" />
+    <Property Name="DamageID" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Caliber" Relationship="Self.FK_Ammos_Calibers" FromRole="Ammos" ToRole="Calibers" />
+    <NavigationProperty Name="Damage" Relationship="Self.FK_Ammos_Damages" FromRole="Ammos" ToRole="Damages" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Ammos_Manufacturers" FromRole="Ammos" ToRole="Manufacturers" />
+    <NavigationProperty Name="RelatedFirearm" Relationship="Self.FK_Ammos_RelatedFirearms" FromRole="Ammos" ToRole="RelatedFirearms" />
+  </EntityType>
+  <EntityType Name="Calibers">
+    <Key>
+      <PropertyRef Name="CaliberID" />
+    </Key>
+    <Property Name="CaliberID" Type="Int32" Nullable="false" />
+    <Property Name="CaliberName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CaliberDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ammos" Relationship="Self.FK_Ammos_Calibers" FromRole="Calibers" ToRole="Ammos" />
+    <NavigationProperty Name="Calibers1" Relationship="Self.FK_Calibers_Calibers" FromRole="Calibers" ToRole="Calibers1" />
+    <NavigationProperty Name="Caliber1" Relationship="Self.FK_Calibers_Calibers" FromRole="Calibers1" ToRole="Calibers" />
+  </EntityType>
+  <EntityType Name="Damages">
+    <Key>
+      <PropertyRef Name="DamageID" />
+    </Key>
+    <Property Name="DamageID" Type="Int32" Nullable="false" />
+    <Property Name="Penetration" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Damage1" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ArmorDamage" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FragmentationChange" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Ammos" Relationship="Self.FK_Ammos_Damages" FromRole="Damages" ToRole="Ammos" />
+  </EntityType>
+  <EntityType Name="Manufacturers">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ammos" Relationship="Self.FK_Ammos_Manufacturers" FromRole="Manufacturers" ToRole="Ammos" />
+    <NavigationProperty Name="RelatedFirearms" Relationship="Self.FK_RelatedFirearms_Manufacturers" FromRole="Manufacturers" ToRole="RelatedFirearms" />
+  </EntityType>
+  <EntityType Name="RelatedFirearms">
+    <Key>
+      <PropertyRef Name="RFID" />
+    </Key>
+    <Property Name="RFID" Type="Int32" Nullable="false" />
+    <Property Name="FamilyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FamilyDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ManufacturerID" Type="Int32" />
+    <NavigationProperty Name="Ammos" Relationship="Self.FK_Ammos_RelatedFirearms" FromRole="RelatedFirearms" ToRole="Ammos" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_RelatedFirearms_Manufacturers" FromRole="RelatedFirearms" ToRole="Manufacturers" />
+  </EntityType>
+  <Association Name="FK_Ammos_Calibers">
+    <End Role="Calibers" Type="DBAmmoShackModel.Calibers" Multiplicity="1" />
+    <End Role="Ammos" Type="DBAmmoShackModel.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calibers">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_Damages">
+    <End Role="Damages" Type="DBAmmoShackModel.Damages" Multiplicity="1" />
+    <End Role="Ammos" Type="DBAmmoShackModel.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Damages">
+        <PropertyRef Name="DamageID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="DamageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_Manufacturers">
+    <End Role="Manufacturers" Type="DBAmmoShackModel.Manufacturers" Multiplicity="1" />
+    <End Role="Ammos" Type="DBAmmoShackModel.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ammos_RelatedFirearms">
+    <End Role="RelatedFirearms" Type="DBAmmoShackModel.RelatedFirearms" Multiplicity="1" />
+    <End Role="Ammos" Type="DBAmmoShackModel.Ammos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedFirearms">
+        <PropertyRef Name="RFID" />
+      </Principal>
+      <Dependent Role="Ammos">
+        <PropertyRef Name="RFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calibers_Calibers">
+    <End Role="Calibers" Type="DBAmmoShackModel.Calibers" Multiplicity="1" />
+    <End Role="Calibers1" Type="DBAmmoShackModel.Calibers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Calibers">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Calibers1">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedFirearms_Manufacturers">
+    <End Role="Manufacturers" Type="DBAmmoShackModel.Manufacturers" Multiplicity="0..1" />
+    <End Role="RelatedFirearms" Type="DBAmmoShackModel.RelatedFirearms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="RelatedFirearms">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBAmmoShackEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ammos" EntityType="DBAmmoShackModel.Ammos" />
+    <EntitySet Name="Calibers1" EntityType="DBAmmoShackModel.Calibers" />
+    <EntitySet Name="Damages1" EntityType="DBAmmoShackModel.Damages" />
+    <EntitySet Name="Manufacturers1" EntityType="DBAmmoShackModel.Manufacturers" />
+    <EntitySet Name="RelatedFirearms1" EntityType="DBAmmoShackModel.RelatedFirearms" />
+    <AssociationSet Name="FK_Ammos_Calibers" Association="Self.FK_Ammos_Calibers">
+      <End Role="Calibers" EntitySet="Calibers1" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_Damages" Association="Self.FK_Ammos_Damages">
+      <End Role="Damages" EntitySet="Damages1" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_Manufacturers" Association="Self.FK_Ammos_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers1" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ammos_RelatedFirearms" Association="Self.FK_Ammos_RelatedFirearms">
+      <End Role="RelatedFirearms" EntitySet="RelatedFirearms1" />
+      <End Role="Ammos" EntitySet="Ammos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calibers_Calibers" Association="Self.FK_Calibers_Calibers">
+      <End Role="Calibers" EntitySet="Calibers1" />
+      <End Role="Calibers1" EntitySet="Calibers1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedFirearms_Manufacturers" Association="Self.FK_RelatedFirearms_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers1" />
+      <End Role="RelatedFirearms" EntitySet="RelatedFirearms1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

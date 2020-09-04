@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBAmmoShackModelStoreContainer" CdmEntityContainer="DBAmmoShackEntities">
+    <EntitySetMapping Name="Ammos">
+      <EntityTypeMapping TypeName="DBAmmoShackModel.Ammos">
+        <MappingFragment StoreEntitySet="Ammos">
+          <ScalarProperty Name="AmmoID" ColumnName="AmmoID" />
+          <ScalarProperty Name="AmmoName" ColumnName="AmmoName" />
+          <ScalarProperty Name="AmmoDescription" ColumnName="AmmoDescription" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsTracer" ColumnName="IsTracer" />
+          <ScalarProperty Name="IsSubsonic" ColumnName="IsSubsonic" />
+          <ScalarProperty Name="MuzzleVelocity" ColumnName="MuzzleVelocity" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="CaliberID" ColumnName="CaliberID" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="DamageID" ColumnName="DamageID" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calibers1">
+      <EntityTypeMapping TypeName="DBAmmoShackModel.Calibers">
+        <MappingFragment StoreEntitySet="Calibers">
+          <ScalarProperty Name="CaliberID" ColumnName="CaliberID" />
+          <ScalarProperty Name="CaliberName" ColumnName="CaliberName" />
+          <ScalarProperty Name="CaliberDescription" ColumnName="CaliberDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Damages1">
+      <EntityTypeMapping TypeName="DBAmmoShackModel.Damages">
+        <MappingFragment StoreEntitySet="Damages">
+          <ScalarProperty Name="DamageID" ColumnName="DamageID" />
+          <ScalarProperty Name="Penetration" ColumnName="Penetration" />
+          <ScalarProperty Name="Damage1" ColumnName="Damage" />
+          <ScalarProperty Name="ArmorDamage" ColumnName="ArmorDamage" />
+          <ScalarProperty Name="FragmentationChange" ColumnName="FragmentationChange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturers1">
+      <EntityTypeMapping TypeName="DBAmmoShackModel.Manufacturers">
+        <MappingFragment StoreEntitySet="Manufacturers">
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelatedFirearms1">
+      <EntityTypeMapping TypeName="DBAmmoShackModel.RelatedFirearms">
+        <MappingFragment StoreEntitySet="RelatedFirearms">
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="FamilyDescription" ColumnName="FamilyDescription" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
