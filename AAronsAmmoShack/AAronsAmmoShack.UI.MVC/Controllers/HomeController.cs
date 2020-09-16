@@ -1,4 +1,7 @@
 ﻿using System.Web.Mvc;
+using AAronsAmmoShack.UI.MVC.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace AAronsAmmoShack.UI.MVC.Controllers
 {
@@ -26,5 +29,40 @@ namespace AAronsAmmoShack.UI.MVC.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(ContactViewModel usersContactRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(usersContactRequest);
+            }
+
+            //mail message is taking 4 params below, can see when you hover over
+            //diff variations of mail message can be modified through those different params 
+            MailMessage msg = new MailMessage("admin@yourdomain.com", "standingbytocopy@gmail.com", usersContactRequest.Subject,
+    usersContactRequest.Message);
+
+            msg.CC.Add("yourccemail@gmail.com");
+
+            SmtpClient client = new SmtpClient("mail.yourdomain.com");
+            client.Credentials = new NetworkCredential("admin@yourdomain.com", "Admin@123456");
+
+            client.Port = 8889;
+
+            try
+            {
+                client.Send(msg);
+            }
+            catch (System.Exception ex)
+            {
+                ViewBag.ErrorMessage = "There was techmologie differentials" + ex.StackTrace;
+                return View(usersContactRequest);
+            }
+
+            return View("EmailConfirmation", usersContactRequest);  //send the user to a email conformation view
+        }
+
     }
 }
