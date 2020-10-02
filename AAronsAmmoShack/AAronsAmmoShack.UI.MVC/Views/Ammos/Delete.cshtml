@@ -1,0 +1,120 @@
+﻿@model AAronsAmmoShack.DATA.EF.Ammos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Ammos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AmmoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmmoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmmoDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmmoDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTracer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTracer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSubsonic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSubsonic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MuzzleVelocity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MuzzleVelocity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caliber.CaliberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caliber.CaliberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Damage.DamageID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Damage.DamageID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelatedFirearm.FamilyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelatedFirearm.FamilyName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

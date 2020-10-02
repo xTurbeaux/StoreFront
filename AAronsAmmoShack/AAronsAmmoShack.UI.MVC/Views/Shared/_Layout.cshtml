@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>@ViewBag.Title | Simple House Template</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/css/templatemo-style.css" rel="stylesheet" />
 </head>
 <!--
@@ -35,12 +36,12 @@ https://templatemo.com/tm-539-simple-house
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
                                 <li class="tm-nav-li"><a href="@Url.Action("Index", "Home")" class="tm-nav-link active">Home</a></li>
-                                <li class="tm-nav-li"><a href="@Url.Action("Index", "Ammo")" class="tm-nav-link">Ammo</a></li>
-                                <li class="tm-nav-li"><a href="@Url.Action("Index", "Log")" class="tm-nav-link">Log</a></li>
+                                <li class="tm-nav-li"><a href="@Url.Action("Index", "Ammos")" class="tm-nav-link">Ammo</a></li>
+                                <li class="tm-nav-li"><a href="@Url.Action("Login", "Account")" class="tm-nav-link">Log</a></li>
                                 <li class="tm-nav-li"><a href="@Url.Action("Contact", "Home")" class="tm-nav-link">Contact</a></li>
                                 @*<li class="tm-nav-li">
-                                    <span class="tm-nav-link">@Html.Partial("_LoginPartial")</span>
-                                </li>*@
+                                        <span class="tm-nav-link">@Html.Partial("_LoginPartial")</span>
+                                    </li>*@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li tm-nav-li>
@@ -71,8 +72,8 @@ https://templatemo.com/tm-539-simple-house
 
 
         </main>
+        @RenderBody()
         <div>
-            @RenderBody()
             <footer class="tm-footer text-center">
                 <p>
                     Copyright &copy; 2020 Simple House
@@ -99,6 +100,8 @@ https://templatemo.com/tm-539-simple-house
             });
         });
     </script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
 
     @RenderSection("scripts", false)
 

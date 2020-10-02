@@ -1,0 +1,111 @@
+﻿@model IEnumerable<AAronsAmmoShack.DATA.EF.Ammos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AmmoName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmmoDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsTracer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSubsonic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuzzleVelocity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caliber.CaliberName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Damage.DamageID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedFirearm.FamilyName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmmoName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmmoDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsTracer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsSubsonic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MuzzleVelocity)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+                    <img class="gmi" src="~/Content/img/ammPictures/@item.ProductImage" alt="@item.AmmoName" title="@item.AmmoName" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Caliber.CaliberName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Damage.DamageID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RelatedFirearm.FamilyName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AmmoID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AmmoID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AmmoID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}

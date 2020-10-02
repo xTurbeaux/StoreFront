@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AmmosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManufacturersController.cs" />
@@ -193,6 +194,35 @@
     <Content Include="Content\img\about-04.jpg" />
     <Content Include="Content\img\about-05.jpg" />
     <Content Include="Content\img\about-06.jpg" />
+    <Content Include="Content\img\ammPictures\7BT1.jpg" />
+    <Content Include="Content\img\ammPictures\7N39.jpg" />
+    <Content Include="Content\img\ammPictures\BS.jpg" />
+    <Content Include="Content\img\ammPictures\BT.jpg" />
+    <Content Include="Content\img\ammPictures\74BP.jpg" />
+    <Content Include="Content\img\ammPictures\GT.jpg" />
+    <Content Include="Content\img\ammPictures\M80.jpg" />
+    <Content Include="Content\img\ammPictures\M995.jpg" />
+    <Content Include="Content\img\ammPictures\M855A1.jpg" />
+    <Content Include="Content\img\ammPictures\M856A1.jpg" />
+    <Content Include="Content\img\ammPictures\M855.jpg" />
+    <Content Include="Content\img\ammPictures\BP.jpg" />
+    <Content Include="Content\img\ammPictures\PS.jpg" />
+    <Content Include="Content\img\ammPictures\7N1.jpg" />
+    <Content Include="Content\img\ammPictures\7N31.jpg" />
+    <Content Include="Content\img\ammPictures\7N37.jpg" />
+    <Content Include="Content\img\ammPictures\AP63.jpg" />
+    <Content Include="Content\img\gallery\Bear.png" />
+    <Content Include="Content\img\gallery\bearVSS.jpg" />
+    <Content Include="Content\img\gallery\flashOut.png" />
+    <Content Include="Content\img\ammPictures\M61.jpg" />
+    <Content Include="Content\img\ammPictures\M62.jpg" />
+    <Content Include="Content\img\ammPictures\M993.jpg" />
+    <Content Include="Content\img\ammPictures\PSTGZH.jpg" />
+    <Content Include="Content\img\gallery\scavingAbout.png" />
+    <Content Include="Content\img\gallery\schoolSiege.jpg" />
+    <Content Include="Content\img\ammPictures\SNB.jpg" />
+    <Content Include="Content\img\ammPictures\T45M.jpg" />
+    <Content Include="Content\img\ammPictures\US.jpg" />
     <Content Include="Content\img\dummy-img.png" />
     <Content Include="Content\img\gallery\01.jpg" />
     <Content Include="Content\img\gallery\02.jpg" />
@@ -331,6 +361,11 @@
     <Content Include="_Archive\webfonts\fa-solid-900.woff2" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Ammos\Create.cshtml" />
+    <Content Include="Views\Ammos\Delete.cshtml" />
+    <Content Include="Views\Ammos\Details.cshtml" />
+    <Content Include="Views\Ammos\Edit.cshtml" />
+    <Content Include="Views\Ammos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
